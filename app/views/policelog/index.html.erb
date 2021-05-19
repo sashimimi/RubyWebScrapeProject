@@ -1,0 +1,51 @@
+<h3>Final Analysis of Ruby Web Scrape Project</h3>
+
+<p>
+I set up a Rails project to be able to display the Leaflet map with police call log incidents.
+I was able to get the web scrape part complete using Httparty and Nokogiri within the controller, and was able to display the results of the scrape in the view.
+However, I was unable to get the Leaflet-Rails gem to work properly. The gem works properly, but I could not get the various Leaflet functions to work in my code.
+Some errors include "L (a leaflet function) is not defined" and "Map container not found". The second error was due to the script loading before the HTML, but I didn't know how to fix it in time.
+
+<br/><br/>
+
+Previously, I had noted struggles with requiring third-party gems in order to allow the script to work correctly. I was continually getting an error where I couldn't load a dependency even though I had the required gems installed and the require statement at the top of the file. 
+Ultimately, the solution to that was switching the dependencies around, which I do not fully understand how would fix it. 
+In Rails, Gemfiles make adding dependencies so much easier. 
+With other programming languages, I always saw files like Rakefiles and did not fully understand how to use them, but by taking on this project I believe that I can grasp the concept more now than before.
+
+<br/><br/>
+
+In milestone #2, I had set the goal that if I was not able to get everything I wanted working correctly, I wanted to be able to present a successful web scrape project as I had never done that before.
+Although I was unable to complete the project as I expected, I believe I reached my minimum goal and I learned a lot aoout web scraping, Rails, and Gemfile dependencies in the process. And for that, I am satisfied with the work done within the deadline.
+I am probably going to recreate this app using HTML/PHP/JavaScript in my own time because I am genuinely interested in seeing how this would look if it happened to be successful.
+</p>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+
+<table style="width: 100%">
+    <thead>
+        <th>Date</th>
+        <th>Street Name</th>
+        <th>Closest Intersection</th>
+        <th>Call Type</th>
+        <th>Incident Number</th>
+        <th>CFS Dispo</th>
+    </thead>
+
+<% @incidents.each do |incident| %>
+    <tr>
+        <td><%= incident["dateTime"] %></td>
+        <td><%= incident["streetName"] %></td>
+        <td><%= incident["closestIntersection"] %></td>
+        <td><%= incident["callType"] %></td>
+        <td><%= incident["incidentNumber"] %></td>
+        <td><%= incident["cfsDispo"] %></td>
+    </tr>
+<% end %>
+
+</table>
